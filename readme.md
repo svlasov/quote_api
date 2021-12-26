@@ -3,8 +3,23 @@
 ## How to run
 
 ### With Python
+Install prerequisites
+Python 3.8 (probably should work with other 3+ versions)
 
-### With Docker
+Install requirements:
+```shell
+pip install -r requirements.txt
+```
+
+Run Flask app with default settings:
+```shell
+python -m flask run
+```
+
+Run Flask app in development + debug mode no port 8000
+```shell
+FLASK_ENV=development FLASK_DEBUG=1 python -m flask run --port=8000
+```
 
 ### Design decision motivations
 
