@@ -1,5 +1,5 @@
- - implement a dummy api 
- - implement data feed
- - implement business logic
- - integrate all the above
- - separate data feed into a microservice
+ - [x] implement a dummy api 
+ - [ ] implement data feed
+ - [ ] implement business logic
+ - [ ] integrate all the above
+ - [ ] separate data feed into a microservice

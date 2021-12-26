@@ -9,7 +9,7 @@ app = Flask(__name__)
 logger = app.logger
 
 # Method: GET; Request URL: <BASE_URL>/api/quote
-@app.route('/api/quote')
+@app.route('/api/quote', methods=['GET'])
 def quote():
     logger.debug(pprint.pformat(request.args))
 
