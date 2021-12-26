@@ -1,5 +1,6 @@
 import pprint
 import threading
+from functools import partial
 
 import requests
 
@@ -30,31 +31,28 @@ class RatesFeed(object):
             return provider_client.get_latest_rate(from_currency_code=code_from,
                                                                                   to_currency_code=code_to)
 
-        rates = {}
-
-        def fill_rates(client, rates):
+        def fill_rates(client, p_rates):
             provider_name = client.provider_name
             provider_rate = get_rate(provider_client=client,
                                      code_from=from_currency_code,
                                      code_to=to_currency_code)
 
-            rates[provider_name] = provider_rate
+            p_rates[provider_name] = provider_rate
+            return provider_rate
+
+        provider_rates = {}
+
+        tt = []
 
         for client in self._clients:
-            fill_rates(client=client, rates=rates)
-            # provider_name = client.provider_name
-            # provider_rate = get_rate(provider_client=client,
-            #                          code_from=from_currency_code,
-            #                          code_to=to_currency_code)
-            #
-            # rates[provider_name] = provider_rate
+            t = threading.Thread(target=partial(fill_rates, client, provider_rates))
+            t.start()
+            tt.append(t)
 
+        for t in tt:
+            t.join()
 
-
-        # for client in self._clients:
-        #     threading.Thread(target=)
-
-        return rates
+        return provider_rates
 
 
 if __name__ == '__main__':
