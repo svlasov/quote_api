@@ -16,7 +16,7 @@ Run Flask app with default settings:
 python -m flask run
 ```
 
-Run Flask app in development + debug mode no port 8000
+Run Flask app in development + debug mode on port 8000
 ```shell
 FLASK_ENV=development FLASK_DEBUG=1 python -m flask run --port=8000
 ```
