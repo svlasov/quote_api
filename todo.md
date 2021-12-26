@@ -1,5 +1,12 @@
  - [x] implement a dummy api 
  - [ ] implement data feed
+    - [ ] provider connectors + adapters
+    - [ ] fetching?
+      - [ ] on demand
+        - [ ] sequential? (single thread)
+        - [ ] parallel? (multithreading)
+      - [ ] scheduled?
  - [ ] implement business logic
+    - [ ] implement quote counter
  - [ ] integrate all the above
  - [ ] separate data feed into a microservice
