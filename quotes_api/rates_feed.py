@@ -1,4 +1,5 @@
 import pprint
+import threading
 
 import requests
 
@@ -31,13 +32,27 @@ class RatesFeed(object):
 
         rates = {}
 
-        for client in self._clients:
+        def fill_rates(client, rates):
             provider_name = client.provider_name
             provider_rate = get_rate(provider_client=client,
                                      code_from=from_currency_code,
                                      code_to=to_currency_code)
 
             rates[provider_name] = provider_rate
+
+        for client in self._clients:
+            fill_rates(client=client, rates=rates)
+            # provider_name = client.provider_name
+            # provider_rate = get_rate(provider_client=client,
+            #                          code_from=from_currency_code,
+            #                          code_to=to_currency_code)
+            #
+            # rates[provider_name] = provider_rate
+
+
+
+        # for client in self._clients:
+        #     threading.Thread(target=)
 
         return rates
 
@@ -59,14 +74,4 @@ if __name__ == '__main__':
 
     pprint.pprint(rates)
 
-    # https://api.exchangerate-api.com/v4/latest/USD
-    # url = 'https://api.exchangerate-api.com/v4/latest/USD'
-    # resp = requests.get(url)
-    # pjson = pprint.pformat(resp.json())
-    # print(pjson)
-    #
-    # # https://api.frankfurter.app/latest?from=USD
-    # url = 'https://api.frankfurter.app/latest?from=USD'
-    # resp = requests.get(url)
-    # pjson = pprint.pformat(resp.json())
-    # print(pjson)
+
