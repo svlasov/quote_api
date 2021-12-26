@@ -41,6 +41,6 @@ class RatePicker(object):
                     pass
 
         # update usage counter
-        self.quote_counter.update(p)
+        self.quote_counter.update({p: 1})
         # return result
         return p, r
