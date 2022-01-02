@@ -1,21 +1,23 @@
  - [x] implement a dummy api 
- - [ ] implement data feed
+ - [x] implement data feed
     - [ ] provider connectors + adapters
     - [ ] fetching?
       - [ ] on demand
         - [ ] sequential? (single thread)
         - [ ] parallel? (multithreading)
       - [ ] scheduled?
- - [ ] implement business logic
-    - [ ] implement quote counter
+ - [x] implement business logic
+    - [x] implement quote counter
+        - [ ] add persistence + caching
+ - [ ] before/after hooks
  - [ ] integrate all the above
  - [ ] separate data feed into a microservice
  - [ ] Docker
     - [ ] run with uwsgi or other manager/workers mechanism
     - [ ] allow dynamic host and/or port binding assignment via env vars
-    
  - [ ] separate logs for Flask (and other 3rd parties) and the app/microservice
+    - [ ] structured logging
  - [ ] input validation
  - [ ] persistence layer
  - [ ] latest rates caching
- - [ ] logging (structured)
+ 
