@@ -1,13 +1,12 @@
-FROM ubuntu:20.04
-RUN apt-get update -y
-RUN apt-get install python3 -y
-RUN apt-get install python3-pip -y
+FROM python:3.8-alpine
+#FROM python:3.8
 
-COPY app.py /home/app.py
-COPY requirements.txt /home/requirements.txt
-COPY quotes_api /home/quotes_api
-
-RUN python3 -m pip install -r /home/requirements.txt
-
-ENTRYPOINT FLASK_APP=/home/app.py python3 -m flask run --host=0.0.0.0
-# CMD /bin/bash
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]

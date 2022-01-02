@@ -1,0 +1,6 @@
+services:
+  quotes_api:
+    build: .
+    image: svlasov/quotes_api:alpine
+    ports:
+      - "5000:5000"

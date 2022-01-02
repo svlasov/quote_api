@@ -10,3 +10,12 @@
     - [ ] implement quote counter
  - [ ] integrate all the above
  - [ ] separate data feed into a microservice
+ - [ ] Docker
+    - [ ] run with uwsgi or other manager/workers mechanism
+    - [ ] allow dynamic host and/or port binding assignment via env vars
+    
+ - [ ] separate logs for Flask (and other 3rd parties) and the app/microservice
+ - [ ] input validation
+ - [ ] persistence layer
+ - [ ] latest rates caching
+ - [ ] logging (structured)
